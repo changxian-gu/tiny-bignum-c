@@ -241,6 +241,15 @@ void bignum_sub(struct bn* a, struct bn* b, struct bn* c)
   }
 }
 
+void bignum_sub_imm(struct bn* a, uint64_t b) {
+  struct bn c, tmp;
+  bignum_init(&c);
+  bignum_init(&tmp);
+  bignum_from_int(&tmp, b);
+  bignum_assign(&c, a);
+  bignum_sub(&c, &tmp, a);
+}
+
 
 void bignum_mul(struct bn* a, struct bn* b, struct bn* c)
 {
